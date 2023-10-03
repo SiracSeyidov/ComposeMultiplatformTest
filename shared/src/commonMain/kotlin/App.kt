@@ -12,6 +12,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
@@ -21,19 +24,37 @@ fun App() {
     MaterialTheme {
         var greetingText by remember { mutableStateOf("Hello, World!") }
         var showImage by remember { mutableStateOf(false) }
+        var show = false
+
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = {
-                greetingText = "Hello, ${getPlatformName()}"
-                showImage = !showImage
-            }) {
-                Text(greetingText)
+            if (show){
+                Column {
+                    Button(onClick = {
+                        greetingText = "Hello, ${getPlatformName()}"
+                        showImage = !showImage
+                    }) {
+                        Text(greetingText)
+                    }
+                    AnimatedVisibility(showImage) {
+                        Image(
+                            painterResource("petsgosplashimg.png"),
+                            null
+                        )
+                    }
+
+                    Text(
+                        text = "PetsGo",
+                        style = MaterialTheme.typography.body1.copy(
+                            fontWeight = FontWeight.SemiBold,
+                            letterSpacing = 0.sp,
+                            fontSize = 20.sp
+                        ),
+                        color = Color.Magenta
+                    )
+                }
             }
-            AnimatedVisibility(showImage) {
-                Image(
-                    painterResource("compose-multiplatform.xml"),
-                    null
-                )
-            }
+
+            FirstScreen()
         }
     }
 }
