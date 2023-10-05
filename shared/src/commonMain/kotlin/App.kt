@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import screens.Welcome
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
@@ -53,8 +54,8 @@ fun App() {
                     )
                 }
             }
-
-            FirstScreen()
+            
+            Welcome()
         }
     }
 }

@@ -1,4 +1,4 @@
-package CustomViews
+package custom_views
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

@@ -1,17 +1,18 @@
+package screens
+
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.NavigationRail
-import androidx.compose.material.NavigationRailItem
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,11 +34,16 @@ import org.jetbrains.compose.resources.painterResource
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun FirstScreen() {
+fun Welcome() {
     var second by remember { mutableStateOf(false) }
-
-    if (!second){
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    if (second){
+        SignUp()
+    }else{
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .verticalScroll(rememberScrollState())
+        ) {
             Image(
                 painterResource("petsgosplashimg.png"),
                 contentDescription = null,
@@ -98,7 +104,5 @@ fun FirstScreen() {
                 )
             }
         }
-    }else{
-        SecondScreen()
     }
 }
